@@ -1,14 +1,27 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import Result from './components/Result';
+import UserInput from './components/UserInput';
 
 export default class App extends React.Component {
+  state = {
+    content: '',
+    shares: 0,
+    likes: 0,
+    comments: 0,
+  }
+
+  changeField(field, input) {
+    this.setState({
+      [field]: input,
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <TextInput
-          placeholder='Number of comments'
-        />
+        <Result state={this.state} />
+        <UserInput changeField={this.changeField.bind(this)} />
       </View>
     );
   }
@@ -17,8 +30,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
-  },
+    alignItems: 'center',
+  }
 });
