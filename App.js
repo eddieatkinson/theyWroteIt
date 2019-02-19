@@ -5,7 +5,12 @@ import UserInput from './components/UserInput';
 
 export default class App extends React.Component {
   state = {
+    photo: null,
+    name: '',
+    handle: '',
     content: '',
+    time: '',
+    date: '',
     shares: 0,
     likes: 0,
     comments: 0,

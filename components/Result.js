@@ -5,7 +5,13 @@ class Result extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Content: {this.props.state.content}</Text>
+        <View>
+          <View></View>
+          <View></View>
+        </View>
+        <View>
+          <Text>Content: {this.props.state.content}</Text>
+        </View>
         <Text>Shares: {this.props.state.shares}</Text>
         <Text>Likes: {this.props.state.likes}</Text>
         <Text>Comments: {this.props.state.comments}</Text>
