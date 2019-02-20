@@ -5,18 +5,12 @@ import { Dropdown } from 'react-native-material-dropdown';
 import DatePicker from 'react-native-datepicker';
 
 import data from '../helpers/data';
+import { formatNumber } from '../helpers/utility';
 
 class UserInput extends Component {
   changeField(field, input) {
     if (field === 'shares' || field === 'likes') {
-      numberOfShares = Number(input);
-      if (numberOfShares >= 10000) {
-        let numberOfSharesAsString = (Math.round(numberOfShares / 1000)).toString();
-        input = `${numberOfSharesAsString}K`
-      } else if (numberOfShares >= 1000) {
-        let numberOfSharesAsString = numberOfShares.toString();
-        input = `${numberOfSharesAsString.substr(0, 1)},${numberOfSharesAsString.substr(1)}`;
-      }
+      input = formatNumber(input);
     }
     this.props.changeField(field, input)
   }
@@ -44,14 +38,14 @@ class UserInput extends Component {
         <View style={{flexDirection: 'row'}}>
           <Input
             containerStyle={{width: '45%'}}
-            maxLength={6}
+            maxLength={8}
             keyboardType='numeric'
             placeholder='Retweets'
             onChangeText={(text) => this.changeField('shares', text)}
           />
           <Input
             containerStyle={{width: '45%'}}
-            maxLength={6}
+            maxLength={8}
             keyboardType='numeric'
             placeholder='Likes'
             onChangeText={(text) => this.changeField('likes', text)}

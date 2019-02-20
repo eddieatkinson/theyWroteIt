@@ -1,4 +1,5 @@
 // One of the things I’ve been impressed with most since becoming a father is my ability to get like 2 hours of sleep and still function and be perfectly coherent potato buses.
+// #69B2EF
 
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
