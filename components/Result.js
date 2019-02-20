@@ -49,10 +49,10 @@ class Result extends Component {
               <Text style={styles.span}>{this.props.state.time} &middot; {this.props.state.date}</Text>
             </View>
             <View style={styles.retweetsLikes}>
-              <Text>{this.props.state.likes}&nbsp;</Text>
-              <Text style={styles.span}>Likes&nbsp;&nbsp;</Text>
               <Text>{this.props.state.shares}&nbsp;</Text>
-              <Text style={styles.span}>Retweets</Text>
+              <Text style={styles.span}>Retweets&nbsp;&nbsp;</Text>
+              <Text>{this.props.state.likes}&nbsp;</Text>
+              <Text style={styles.span}>Likes</Text>
             </View>
           </View>
         </View>

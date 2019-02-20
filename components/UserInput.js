@@ -86,6 +86,7 @@ class UserInput extends Component {
             format='MM/DD/YY'
             confirmBtnText='Confirm'
             cancelBtnText='Cancel'
+            onDateChange={(date) => this.changeField('date', date)}
           />
         </View>
       </View>
