@@ -7,7 +7,7 @@ export default class App extends React.Component {
   state = {
     celebrity: {
       value: 'Who??',
-      verified: false,
+      isVerified: false,
       handle: '@someone',
       image: require('./assets/images/fred.jpg'),
     },

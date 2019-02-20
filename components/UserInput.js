@@ -40,9 +40,14 @@ class UserInput extends Component {
           onChangeText={(text) => this.changeField('likes', text)}
         />
         <Input
-          label='How many comments?'
+          label='What time?'
           placeholder='Placeholder'
-          onChangeText={(text) => this.changeField('comments', text)}
+          onChangeText={(text) => this.changeField('likes', text)}
+        />
+        <Input
+          label='What date?'
+          placeholder='Placeholder'
+          onChangeText={(text) => this.changeField('likes', text)}
         />
       </View>
     )
@@ -51,9 +56,7 @@ class UserInput extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    flex: 5,
   }
 });
 

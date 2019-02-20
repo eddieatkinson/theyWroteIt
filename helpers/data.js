@@ -1,13 +1,13 @@
 const data = [
   {
     value: 'Bernie Sanders',
-    verified: true,
+    isVerified: true,
     handle: '@BernieSander...',
     image: require('../assets/images/bernie.png'),
   },
   {
     value: 'Donald J. Trump',
-    verified: true,
+    isVerified: true,
     handle: '@realDonaldTrum...',
     image: require('../assets/images/donald.jpg'),
   }
