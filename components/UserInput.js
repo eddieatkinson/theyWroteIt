@@ -2,16 +2,26 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Input } from 'react-native-elements';
 import { Dropdown } from 'react-native-material-dropdown';
+import DatePicker from 'react-native-datepicker';
 
 import data from '../helpers/data';
 
 class UserInput extends Component {
   changeField(field, input) {
+    if (field === 'shares' || field === 'likes') {
+      numberOfShares = Number(input);
+      if (numberOfShares >= 10000) {
+        let numberOfSharesAsString = (Math.round(numberOfShares / 1000)).toString();
+        input = `${numberOfSharesAsString}K`
+      } else if (numberOfShares >= 1000) {
+        let numberOfSharesAsString = numberOfShares.toString();
+        input = `${numberOfSharesAsString.substr(0, 1)},${numberOfSharesAsString.substr(1)}`;
+      }
+    }
     this.props.changeField(field, input)
   }
 
   onChangeText(index, data) {
-    // console.log(data[index]);
     this.props.changeField('celebrity', data[index])
   }
 
@@ -34,25 +44,51 @@ class UserInput extends Component {
         <View style={{flexDirection: 'row'}}>
           <Input
             containerStyle={{width: '45%'}}
-            placeholder='Number of retweets'
+            maxLength={6}
+            keyboardType='numeric'
+            placeholder='Retweets'
             onChangeText={(text) => this.changeField('shares', text)}
           />
           <Input
             containerStyle={{width: '45%'}}
-            placeholder='Number of likes'
+            maxLength={6}
+            keyboardType='numeric'
+            placeholder='Likes'
             onChangeText={(text) => this.changeField('likes', text)}
           />
         </View>
-        <Input
-          containerStyle={{width: 300}}
-          placeholder='Placeholder'
-          onChangeText={(text) => this.changeField('likes', text)}
-        />
-        <Input
-          containerStyle={{width: 300}}
-          placeholder='Placeholder'
-          onChangeText={(text) => this.changeField('likes', text)}
-        />
+        <View style={{flexDirection: 'row'}}>
+          <DatePicker
+            style={{padding: 10, width: 150}}
+            placeholder={this.props.time}
+            customStyles={{
+              placeholderText: {
+                color: 'black',
+              }
+            }}
+            showIcon={false}
+            mode='time'
+            format='LT'
+            confirmBtnText='Confirm'
+            cancelBtnText='Cancel'
+            onDateChange={(time) => this.changeField('time', time)}
+          />
+          <DatePicker
+            style={{padding: 10, width: 150}}
+            placeholder={this.props.date}
+            customStyles={{
+              placeholderText: {
+                color: 'black',
+              }
+            }}
+            showIcon={false}
+            mode='date'
+            format='MM/DD/YY'
+            confirmBtnText='Confirm'
+            cancelBtnText='Cancel'
+            onDateChange={(date) => this.changeField('date', date)}
+          />
+        </View>
       </View>
     )
   }
@@ -61,7 +97,7 @@ class UserInput extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 5,
-  }
+  },
 });
 
 export default UserInput;
