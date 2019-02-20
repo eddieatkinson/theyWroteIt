@@ -44,7 +44,7 @@ class UserInput extends Component {
             placeholder='Stupid stuff...'
             onChangeText={(text) => this.changeField('content', text)}
           />
-          <Text>{this.state.numberOfCharactersLeft}{'\n'}left</Text>
+          <Text style={ this.state.numberOfCharactersLeft <= 10 ? { color: 'red' } : null }>{this.state.numberOfCharactersLeft}{'\n'}left</Text>
         </View>
         <View style={{flexDirection: 'row'}}>
           <Input
