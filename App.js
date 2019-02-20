@@ -5,7 +5,15 @@ import UserInput from './components/UserInput';
 
 export default class App extends React.Component {
   state = {
+    celebrity: {
+      value: 'Who??',
+      isVerified: false,
+      handle: '@someone',
+      image: require('./assets/images/fred.jpg'),
+    },
     content: '',
+    time: '',
+    date: '',
     shares: 0,
     likes: 0,
     comments: 0,

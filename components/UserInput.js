@@ -1,15 +1,29 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Input } from 'react-native-elements';
+import { Dropdown } from 'react-native-material-dropdown';
+
+import data from '../helpers/data';
 
 class UserInput extends Component {
   changeField(field, input) {
     this.props.changeField(field, input)
   }
 
+  onChangeText(index, data) {
+    // console.log(data[index]);
+    this.props.changeField('celebrity', data[index])
+  }
+
   render() {
     return(
       <View style={styles.container}>
+        <Dropdown
+          containerStyle={{width: 200}}
+          label='Choose your celebrity'
+          data={data}
+          onChangeText={(value, index, data) => this.onChangeText(index, data)}
+        />
         <Input
           label='Content'
           placeholder='Stupid stuff...'
@@ -26,9 +40,14 @@ class UserInput extends Component {
           onChangeText={(text) => this.changeField('likes', text)}
         />
         <Input
-          label='How many comments?'
+          label='What time?'
           placeholder='Placeholder'
-          onChangeText={(text) => this.changeField('comments', text)}
+          onChangeText={(text) => this.changeField('likes', text)}
+        />
+        <Input
+          label='What date?'
+          placeholder='Placeholder'
+          onChangeText={(text) => this.changeField('likes', text)}
         />
       </View>
     )
@@ -37,9 +56,7 @@ class UserInput extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    flex: 5,
   }
 });
 
