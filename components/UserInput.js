@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Input } from 'react-native-elements';
 import { Dropdown } from 'react-native-material-dropdown';
+import DatePicker from 'react-native-datepicker';
 
 import data from '../helpers/data';
 
@@ -11,7 +12,6 @@ class UserInput extends Component {
   }
 
   onChangeText(index, data) {
-    // console.log(data[index]);
     this.props.changeField('celebrity', data[index])
   }
 
@@ -43,15 +43,12 @@ class UserInput extends Component {
             onChangeText={(text) => this.changeField('likes', text)}
           />
         </View>
-        <Input
-          containerStyle={{width: 300}}
-          placeholder='Placeholder'
-          onChangeText={(text) => this.changeField('likes', text)}
-        />
-        <Input
-          containerStyle={{width: 300}}
-          placeholder='Placeholder'
-          onChangeText={(text) => this.changeField('likes', text)}
+        <DatePicker
+          style={{padding: 10, width: 300}}
+          mode='datetime'
+          format='MMMM Do YYYY, h:mm:ss a'
+          confirmBtnText='Confirm'
+          cancelBtnText='Cancel'
         />
       </View>
     )
