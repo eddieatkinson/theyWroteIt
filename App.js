@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import Result from './components/Result';
 import UserInput from './components/UserInput';
+import moment from 'moment';
 
 export default class App extends React.Component {
   state = {
@@ -12,7 +13,8 @@ export default class App extends React.Component {
       image: require('./assets/images/fred.jpg'),
     },
     content: '',
-    dateTime: '',
+    time: moment().format('LT'),
+    date: moment().format('MM/DD/YY'),
     shares: 0,
     likes: 0,
     comments: 0,
@@ -28,7 +30,7 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <Result state={this.state} />
-        <UserInput changeField={this.changeField.bind(this)} />
+        <UserInput time={this.state.time} date={this.state.date} changeField={this.changeField.bind(this)} />
       </View>
     );
   }

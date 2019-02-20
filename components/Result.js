@@ -46,13 +46,13 @@ class Result extends Component {
           </View>
           <View style={styles.infoRow}>
             <View style={styles.dateTime}>
-              <Text style={styles.span}>Time &middot; Date</Text>
+              <Text style={styles.span}>{this.props.state.time} &middot; {this.props.state.date}</Text>
             </View>
             <View style={styles.retweetsLikes}>
-              <Text>{this.props.state.shares}&nbsp;</Text>
-              <Text style={styles.span}>Retweets&nbsp;&nbsp;</Text>
               <Text>{this.props.state.likes}&nbsp;</Text>
-              <Text style={styles.span}>Likes</Text>
+              <Text style={styles.span}>Likes&nbsp;&nbsp;</Text>
+              <Text>{this.props.state.shares}&nbsp;</Text>
+              <Text style={styles.span}>Retweets</Text>
             </View>
           </View>
         </View>
