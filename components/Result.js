@@ -1,3 +1,5 @@
+// One of the things I’ve been impressed with most since becoming a father is my ability to get like 2 hours of sleep and still function and be perfectly coherent potato buses.
+
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import { EvilIcons, Foundation } from '@expo/vector-icons';
@@ -43,8 +45,10 @@ class Result extends Component {
             <Text style={styles.content}>{this.props.state.content}</Text>
           </View>
           <View style={styles.infoRow}>
-            <Text>Time &middot; Date</Text>
-            <View style={{flexDirection: 'row'}}>
+            <View style={styles.dateTime}>
+              <Text style={styles.span}>Time &middot; Date</Text>
+            </View>
+            <View style={styles.retweetsLikes}>
               <Text>{this.props.state.shares}&nbsp;</Text>
               <Text style={styles.span}>Retweets&nbsp;&nbsp;</Text>
               <Text>{this.props.state.likes}&nbsp;</Text>
@@ -100,22 +104,32 @@ const styles = StyleSheet.create({
   contentRow: {
     width: '100%',
     paddingHorizontal: 15,
-    paddingBottom: 15,
+    paddingBottom: 7,
   },
   content: {
-    fontSize: 20,
+    fontFamily: 'Helvetica Neue',
+    fontWeight: '300',
+    fontSize: 19,
+    lineHeight: 28,
   },
   span: {
     color: 'gray',
   },
   infoRow: {
     marginHorizontal: 13,
+    paddingHorizontal: 2,
+    paddingVertical: 5,
+  },
+  dateTime: {
+    paddingVertical: 8,
+  },
+  retweetsLikes: {
+    paddingVertical: 8,
+    flexDirection: 'row',
     borderTopColor: 'gray',
     borderTopWidth: 0.5,
     borderBottomColor: 'gray',
     borderBottomWidth: 0.5,
-    paddingHorizontal: 2,
-    paddingVertical: 5,
   },
 });
 
