@@ -1,9 +1,9 @@
 // One of the things I’ve been impressed with most since becoming a father is my ability to get like 2 hours of sleep and still function and be perfectly coherent potato buses.
-// #69B2EF
 
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import { EvilIcons, Foundation } from '@expo/vector-icons';
+import Autolink from 'react-native-autolink';
 
 class Result extends Component {
   showVerified() {
@@ -43,7 +43,13 @@ class Result extends Component {
             </View>
           </View>
           <View style={styles.contentRow}>
-            <Text style={styles.content}>{this.props.state.content}</Text>
+            <Autolink
+              style={styles.content}
+              text={this.props.state.content}
+              mention='twitter'
+              hashtag='instagram'
+              onPress={()=>null}
+            />
           </View>
           <View style={styles.infoRow}>
             <View style={styles.dateTime}>

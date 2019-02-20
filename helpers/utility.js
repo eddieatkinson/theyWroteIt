@@ -12,3 +12,8 @@ export function formatNumber(input) {
   }
   return input;
 }
+
+export function calculateCharactersLeft(input) {
+  const charactersUsed = input.length;
+  return 280 - charactersUsed;
+}

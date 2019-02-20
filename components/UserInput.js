@@ -5,12 +5,20 @@ import { Dropdown } from 'react-native-material-dropdown';
 import DatePicker from 'react-native-datepicker';
 
 import data from '../helpers/data';
-import { formatNumber } from '../helpers/utility';
+import { formatNumber, calculateCharactersLeft } from '../helpers/utility';
 
 class UserInput extends Component {
+  state = {
+    numberOfCharactersLeft: 280,
+  }
   changeField(field, input) {
     if (field === 'shares' || field === 'likes') {
       input = formatNumber(input);
+    } else if (field === 'content') {
+      const numberOfCharactersLeft = calculateCharactersLeft(input);
+      this.setState({
+        numberOfCharactersLeft,
+      });
     }
     this.props.changeField(field, input)
   }
@@ -28,13 +36,16 @@ class UserInput extends Component {
           data={data}
           onChangeText={(value, index, data) => this.onChangeText(index, data)}
         />
-        <Input
-          containerStyle={{width: 300}}
-          multiline={true}
-          maxLength={280}
-          placeholder='Stupid stuff...'
-          onChangeText={(text) => this.changeField('content', text)}
-        />
+        <View style={{flexDirection: 'row'}}>
+          <Input
+            containerStyle={{width: 300}}
+            multiline={true}
+            maxLength={280}
+            placeholder='Stupid stuff...'
+            onChangeText={(text) => this.changeField('content', text)}
+          />
+          <Text>{this.state.numberOfCharactersLeft}{'\n'}left</Text>
+        </View>
         <View style={{flexDirection: 'row'}}>
           <Input
             containerStyle={{width: '45%'}}
