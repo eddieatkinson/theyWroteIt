@@ -19,33 +19,37 @@ class UserInput extends Component {
     return(
       <View style={styles.container}>
         <Dropdown
-          containerStyle={{width: 200}}
+          containerStyle={{width: 300}}
           label='Choose your celebrity'
           data={data}
           onChangeText={(value, index, data) => this.onChangeText(index, data)}
         />
         <Input
-          label='Content'
+          containerStyle={{width: 300}}
+          multiline={true}
+          maxLength={280}
           placeholder='Stupid stuff...'
           onChangeText={(text) => this.changeField('content', text)}
         />
+        <View style={{flexDirection: 'row'}}>
+          <Input
+            containerStyle={{width: '45%'}}
+            placeholder='Number of retweets'
+            onChangeText={(text) => this.changeField('shares', text)}
+          />
+          <Input
+            containerStyle={{width: '45%'}}
+            placeholder='Number of likes'
+            onChangeText={(text) => this.changeField('likes', text)}
+          />
+        </View>
         <Input
-          label='How many shares?'
-          placeholder='Placeholder'
-          onChangeText={(text) => this.changeField('shares', text)}
-        />
-        <Input
-          label='How many likes?'
+          containerStyle={{width: 300}}
           placeholder='Placeholder'
           onChangeText={(text) => this.changeField('likes', text)}
         />
         <Input
-          label='What time?'
-          placeholder='Placeholder'
-          onChangeText={(text) => this.changeField('likes', text)}
-        />
-        <Input
-          label='What date?'
+          containerStyle={{width: 300}}
           placeholder='Placeholder'
           onChangeText={(text) => this.changeField('likes', text)}
         />
