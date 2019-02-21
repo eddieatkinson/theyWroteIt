@@ -2,14 +2,14 @@
 
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
-import { EvilIcons, Foundation } from '@expo/vector-icons';
+import { EvilIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 import Autolink from 'react-native-autolink';
 
 class Result extends Component {
   showVerified() {
     if (this.props.state.celebrity.isVerified) {
       return (
-        <Foundation style={{marginLeft: 5}} name='burst' size={15} color='#489CE4' />
+        <MaterialCommunityIcons style={{marginLeft: 5}} name='check-decagram' size={15} color='#489CE4' />
       )
     }
     return null;
