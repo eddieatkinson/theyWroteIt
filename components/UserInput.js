@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, KeyboardAvoidingView } from 'react-native';
 import { Input } from 'react-native-elements';
 import { Dropdown } from 'react-native-material-dropdown';
 import DatePicker from 'react-native-datepicker';
@@ -29,7 +29,7 @@ class UserInput extends Component {
 
   render() {
     return(
-      <View style={styles.container}>
+      <KeyboardAvoidingView behavior='padding' style={styles.container}>
         <Dropdown
           containerStyle={{width: 300}}
           label='Choose your celebrity'
@@ -94,7 +94,7 @@ class UserInput extends Component {
             onDateChange={(date) => this.changeField('date', date)}
           />
         </View>
-      </View>
+      </KeyboardAvoidingView>
     )
   }
 }
