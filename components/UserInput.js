@@ -30,7 +30,7 @@ class UserInput extends Component {
   render() {
     return(
       <KeyboardAvoidingView behavior='padding' style={styles.container}>
-        <View style={styles.container}>
+        <View>
           <Dropdown
             containerStyle={{width: 300}}
             label='Choose your celebrity'
