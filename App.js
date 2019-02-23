@@ -13,9 +13,9 @@ export default class App extends React.Component {
       handle: '@someone',
       image: require('./assets/images/fred.jpg'),
     },
-    name: '',
-    handle: '',
-    isVerified: false,
+    // name: '',
+    // handle: '',
+    // isVerified: false,
     content: '',
     time: moment().format('LT'),
     date: moment().format('MM/DD/YY'),
@@ -34,7 +34,7 @@ export default class App extends React.Component {
   displayBottomHalf() {
     if(this.state.addNew) {
       return(
-        <NewCelebrityInput checked={this.state.isVerified} changeField={this.changeField.bind(this)} />
+        <NewCelebrityInput changeField={this.changeField.bind(this)} />
       )
     }
     return <UserInput time={this.state.time} date={this.state.date} changeField={this.changeField.bind(this)} />

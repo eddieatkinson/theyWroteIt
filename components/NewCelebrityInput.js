@@ -1,10 +1,30 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Input, CheckBox, Button } from 'react-native-elements';
+import { addPerson } from '../helpers/storage';
 
 class NewCelebrityInput extends Component {
+  state={
+    value: '',
+    handle: '',
+    isVerified: false,
+  }
+  cancel() {
+    this.props.changeField('addNew', false);
+  }
   changeField(field, input) {
-    this.props.changeField(field, input);
+    this.setState({
+      [field]: input,
+    });
+  }
+  onSubmit() {
+    if (this.state.value === '' || this.state.handle === '') {
+      alert('Please fill out both Name and Handle fields');
+    } else {
+      console.log('GREAT!');
+      addPerson(this.state);
+      this.cancel();
+    }
   }
   render() {
     return(
@@ -12,7 +32,7 @@ class NewCelebrityInput extends Component {
         <Input
           containerStyle={styles.inputField}
           placeholder='Name'
-          onChangeText={(text) => this.changeField('name', text)}
+          onChangeText={(text) => this.changeField('value', text)}
         />
         <Input
           containerStyle={styles.inputField}
@@ -22,17 +42,18 @@ class NewCelebrityInput extends Component {
         <CheckBox
           center
           title='Verified'
-          checked={this.props.checked}
-          onPress={() => this.changeField('isVerified', !this.props.checked)}
+          checked={this.state.isVerified}
+          onPress={() => this.changeField('isVerified', !this.state.isVerified)}
           containerStyle={styles.checkBox}
         />
         <Button
           title='Cancel'
           type='outline'
-          onPress={() => this.changeField('addNew', false)}
+          onPress={() => this.cancel()}
         />
         <Button
           title='Submit'
+          onPress={() => this.onSubmit()}
         />
       </View>
     );
