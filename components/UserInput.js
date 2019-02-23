@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, View, Text, TouchableHighlight, KeyboardAvoidingView } from 'react-native';
 import { Input } from 'react-native-elements';
 import { Dropdown } from 'react-native-material-dropdown';
 import DatePicker from 'react-native-datepicker';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import data from '../helpers/data';
 import { formatNumber, calculateCharactersLeft } from '../helpers/utility';
@@ -30,12 +31,21 @@ class UserInput extends Component {
   render() {
     return(
       <KeyboardAvoidingView behavior='padding' style={styles.container}>
-        <Dropdown
-          containerStyle={{width: 300}}
-          label='Choose your celebrity'
-          data={data}
-          onChangeText={(value, index, data) => this.onChangeText(index, data)}
-        />
+        <View style={{ flexDirection: 'row' }}>
+          <Dropdown
+            containerStyle={{width: 300}}
+            label='Choose your celebrity'
+            data={data}
+            onChangeText={(value, index, data) => this.onChangeText(index, data)}
+          />
+          <MaterialCommunityIcons
+            style={{position: 'absolute', right: 0, bottom: 10}}
+            name='plus-circle-outline'
+            size={30}
+            color='green'
+            onPress={() => this.changeField('addNew', true)}
+            />
+        </View>
         <View style={{flexDirection: 'row'}}>
           <Input
             containerStyle={{width: 300}}
