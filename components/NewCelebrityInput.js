@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Input, CheckBox, Button } from 'react-native-elements';
+import { ImagePicker, Permissions } from 'expo';
+
 import { addPerson } from '../helpers/storage';
 
 class NewCelebrityInput extends Component {
@@ -11,6 +13,19 @@ class NewCelebrityInput extends Component {
   }
   cancel() {
     this.props.changeField('addNew', false);
+  }
+  async openImagePicker() {
+    // const status = await Permissions.getAsync(Permissions.CAMERA, Permissions.CAMERA_ROLL);
+    // console.log(status);
+    // if (status !== 'granted') {
+
+    //   alert('NO PERMISSIONS!');
+    // }
+    // ImagePicker.launchImageLibraryAsync({
+
+    // });
+    const result = await Permissions.askAsync(Permissions.CAMERA);
+    console.log(result);
   }
   changeField(field, input) {
     this.setState({
@@ -38,6 +53,11 @@ class NewCelebrityInput extends Component {
           containerStyle={styles.inputField}
           placeholder='Handle'
           onChangeText={(text) => this.changeField('handle', text)}
+        />
+        <Button
+          title='Add Image'
+          type='clear'
+          onPress={() => this.openImagePicker()}
         />
         <CheckBox
           center
