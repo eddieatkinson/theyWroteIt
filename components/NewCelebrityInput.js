@@ -1,16 +1,31 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Input, CheckBox, Button } from 'react-native-elements';
+import { ImagePicker, Permissions } from 'expo';
+
 import { addPerson } from '../helpers/storage';
+import { permissionsForCamera, permissionsForCameraRoll } from '../helpers/permissions';
 
 class NewCelebrityInput extends Component {
   state={
     value: '',
     handle: '',
     isVerified: false,
+    image: '',
   }
   cancel() {
     this.props.changeField('addNew', false);
+  }
+  async openImagePicker() {
+    await permissionsForCamera();
+    await permissionsForCameraRoll();
+    const { uri } = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: 'Images',
+      quality: 0,
+    });
+    this.setState({
+      image: uri,
+    });
   }
   changeField(field, input) {
     this.setState({
@@ -20,6 +35,8 @@ class NewCelebrityInput extends Component {
   onSubmit() {
     if (this.state.value === '' || this.state.handle === '') {
       alert('Please fill out both Name and Handle fields');
+    } else if (this.state.uri === '') {
+      alert('Please select a photo');
     } else {
       console.log('GREAT!');
       addPerson(this.state);
@@ -27,6 +44,7 @@ class NewCelebrityInput extends Component {
     }
   }
   render() {
+    console.log(this.state);
     return(
       <View style={styles.container}>
         <Input
@@ -38,6 +56,11 @@ class NewCelebrityInput extends Component {
           containerStyle={styles.inputField}
           placeholder='Handle'
           onChangeText={(text) => this.changeField('handle', text)}
+        />
+        <Button
+          title='Add Image'
+          type='clear'
+          onPress={() => this.openImagePicker()}
         />
         <CheckBox
           center

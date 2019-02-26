@@ -17,7 +17,6 @@ class UserInput extends Component {
 
   async componentDidMount() {
     const data = await getItem('celebrities');
-    // console.log(data);
     this.setState({
       data,
     });

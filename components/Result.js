@@ -15,7 +15,7 @@ class Result extends Component {
     return null;
   }
   render() {
-    const source = this.props.state.celebrity.image;
+    const source = typeof(this.props.state.celebrity.image) === 'number' ? this.props.state.celebrity.image : {uri: this.props.state.celebrity.image};
 
     return (
       <View style={styles.container}>
