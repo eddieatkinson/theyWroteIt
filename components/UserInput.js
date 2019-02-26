@@ -17,7 +17,6 @@ class UserInput extends Component {
 
   async componentDidMount() {
     const data = await getItem('celebrities');
-    // console.log(data);
     this.setState({
       data,
     });
@@ -36,16 +35,6 @@ class UserInput extends Component {
   }
 
   onChangeText(index, data) {
-    // data[index] = {
-    //   image: require(data[index].image),
-    // }
-
-    console.log(data[index].image);
-    console.log(typeof(data[index].image));
-    const image = {
-      img: require('../assets/images/fred.jpg'),
-    }
-    console.log(image);
     this.props.changeField('celebrity', data[index])
   }
 
