@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Input, CheckBox, Button } from 'react-native-elements';
-import { ImagePicker, Permissions } from 'expo';
+import { ImagePicker } from 'expo';
 
 import { addPerson } from '../helpers/storage';
 import { permissionsForCamera, permissionsForCameraRoll } from '../helpers/permissions';
@@ -32,19 +32,17 @@ class NewCelebrityInput extends Component {
       [field]: input,
     });
   }
-  onSubmit() {
+  async onSubmit() {
     if (this.state.value === '' || this.state.handle === '') {
       alert('Please fill out both Name and Handle fields');
     } else if (this.state.uri === '') {
       alert('Please select a photo');
     } else {
-      console.log('GREAT!');
-      addPerson(this.state);
+      await addPerson(this.state);
       this.cancel();
     }
   }
   render() {
-    console.log(this.state);
     return(
       <View style={styles.container}>
         <Input

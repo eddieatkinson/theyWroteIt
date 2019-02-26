@@ -13,9 +13,6 @@ export default class App extends React.Component {
       handle: '@someone',
       image: require('./assets/images/fred.jpg'),
     },
-    // name: '',
-    // handle: '',
-    // isVerified: false,
     content: '',
     time: moment().format('LT'),
     date: moment().format('MM/DD/YY'),
@@ -41,7 +38,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <View style={styles.container}>
         <Result state={this.state} />

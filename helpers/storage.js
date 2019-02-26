@@ -19,7 +19,6 @@ export async function addPerson(newPersonInfo) {
   if (!newPerson) {
     newPerson = [];
   }
-  console.log(newPerson);
   newPerson.push(newPersonInfo);
   try {
     await AsyncStorage.setItem('celebrities', JSON.stringify(newPerson));
