@@ -4,28 +4,28 @@ import { Input, CheckBox, Button } from 'react-native-elements';
 import { ImagePicker, Permissions } from 'expo';
 
 import { addPerson } from '../helpers/storage';
+import { permissionsForCamera, permissionsForCameraRoll } from '../helpers/permissions';
 
 class NewCelebrityInput extends Component {
   state={
     value: '',
     handle: '',
     isVerified: false,
+    image: '',
   }
   cancel() {
     this.props.changeField('addNew', false);
   }
   async openImagePicker() {
-    // const status = await Permissions.getAsync(Permissions.CAMERA, Permissions.CAMERA_ROLL);
-    // console.log(status);
-    // if (status !== 'granted') {
-
-    //   alert('NO PERMISSIONS!');
-    // }
-    // ImagePicker.launchImageLibraryAsync({
-
-    // });
-    const result = await Permissions.askAsync(Permissions.CAMERA);
-    console.log(result);
+    await permissionsForCamera();
+    await permissionsForCameraRoll();
+    const { uri } = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: 'Images',
+      quality: 0,
+    });
+    this.setState({
+      image: uri,
+    });
   }
   changeField(field, input) {
     this.setState({
@@ -35,6 +35,8 @@ class NewCelebrityInput extends Component {
   onSubmit() {
     if (this.state.value === '' || this.state.handle === '') {
       alert('Please fill out both Name and Handle fields');
+    } else if (this.state.uri === '') {
+      alert('Please select a photo');
     } else {
       console.log('GREAT!');
       addPerson(this.state);
@@ -42,6 +44,7 @@ class NewCelebrityInput extends Component {
     }
   }
   render() {
+    console.log(this.state);
     return(
       <View style={styles.container}>
         <Input

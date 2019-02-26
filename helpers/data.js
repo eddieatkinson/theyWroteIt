@@ -1,9 +1,10 @@
+const bernieImage = '../assets/images/bernie.png';
 const data = [
   {
     value: 'Bernie Sanders',
     isVerified: true,
     handle: '@BernieSander...',
-    image: require('../assets/images/bernie.png'),
+    image: require(bernieImage),
   },
   {
     value: 'Donald J. Trump',
