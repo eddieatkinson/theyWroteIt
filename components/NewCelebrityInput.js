@@ -99,7 +99,7 @@ class NewCelebrityInput extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 5,
+    flex: 1,
   },
   inputField: {
     width: 300,
