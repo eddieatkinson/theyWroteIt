@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
-import { getItem } from '../helpers/storage';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { ListItem } from 'react-native-elements';
 import { AntDesign } from '@expo/vector-icons';
+
+import { getItem } from '../helpers/storage';
 
 class CelebrityList extends Component{
   state = {
@@ -13,20 +15,39 @@ class CelebrityList extends Component{
       data,
     });
   }
+  list() {
+    if (this.state.data) {
+      return (
+        <FlatList
+          data={this.state.data}
+          renderItem={({item, index}) => {
+            return (
+                <ListItem
+                  title={item.value}
+                  containerStyle={{backgroundColor: 'blue'}}
+                  leftAvatar={{ source: {uri: item.image}}}
+                  titleStyle={{color: 'red', fontSize: 12}}
+                  key={index}
+                  onPress={() => console.log(item.value)}
+                />
+              )
+            }
+          }
+          keyExtractor={item => `${item.image}`}
+        />
+      )
+    }
+    return null;
+  }
   render() {
     return(
       <View style={styles.container}>
-        <FlatList
-          data={this.state.data}
-          renderItem={({item}) => <Text>{item.value}</Text>}
-          keyExtractor={(item, index) => `${index}`}
-        />
+        {this.list()}
         <AntDesign
-            style={{alignItems: 'center'}}
-            name='pluscircleo'
-            size={30}
-            onPress={() => this.props.addNewCelebrity()}
-          />
+          name='pluscircleo'
+          size={30}
+          onPress={() => this.props.addNewCelebrity()}
+        />
       </View>
     )
   }
@@ -35,7 +56,6 @@ class CelebrityList extends Component{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: 25,
   }
 });
 

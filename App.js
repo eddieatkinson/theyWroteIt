@@ -28,7 +28,7 @@ export default class App extends React.Component {
     });
   }
 
-  displayBottomHalf() {
+  display() {
     if(this.state.addNew) {
       return(
         <ManageCelebrity changeField={this.changeField.bind(this)} />
@@ -44,8 +44,8 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        {this.displayBottomHalf()}
+      <View style={{flex: 1}}>
+        {this.display()}
       </View>
     );
   }
