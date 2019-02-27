@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, SafeAreaView } from 'react-native';
 import Result from './components/Result';
 import UserInput from './components/UserInput';
 import moment from 'moment';
@@ -44,9 +44,9 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <View style={{flex: 1}}>
+      <SafeAreaView style={{flex: 1}}>
         {this.display()}
-      </View>
+      </SafeAreaView>
     );
   }
 }

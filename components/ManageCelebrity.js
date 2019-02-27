@@ -10,23 +10,30 @@ class ManageCelebrity extends Component{
   }
   
   addNewCelebrity() {
-    console.log('PRESSED');
     this.setState({
       addNew: true,
     });
   }
 
+  cancel() {
+    this.setState({
+      addNew: false,
+    });
+  }
+
   displayAddNew() {
     if (this.state.addNew) {
-      return <NewCelebrityInput changeField={this.props.changeField.bind(this)} />
+      return <NewCelebrityInput cancel={this.cancel.bind(this)} changeField={this.props.changeField.bind(this)} />
     }
-    return null;
+    return (
+      <View style={{flex: 1}}></View>
+    );
   }
 
   render() {
     return(
       <View style={styles.container}>
-        <CelebrityList addNewCelebrity={this.addNewCelebrity.bind(this)} />
+        <CelebrityList displayAddButton={this.state.addNew} addNewCelebrity={this.addNewCelebrity.bind(this)} />
         { this.displayAddNew() }
       </View>
     )

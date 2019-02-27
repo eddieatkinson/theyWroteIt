@@ -24,9 +24,7 @@ class CelebrityList extends Component{
             return (
                 <ListItem
                   title={item.value}
-                  containerStyle={{backgroundColor: 'blue'}}
                   leftAvatar={{ source: {uri: item.image}}}
-                  titleStyle={{color: 'red', fontSize: 12}}
                   key={index}
                   onPress={() => console.log(item.value)}
                 />
@@ -39,15 +37,23 @@ class CelebrityList extends Component{
     }
     return null;
   }
-  render() {
-    return(
-      <View style={styles.container}>
-        {this.list()}
+  displayAddButton() {
+    if (!this.props.displayAddButton) {
+      return (
         <AntDesign
           name='pluscircleo'
           size={30}
           onPress={() => this.props.addNewCelebrity()}
         />
+      )
+    }
+    return null;
+  }
+  render() {
+    return(
+      <View style={styles.container}>
+        {this.list()}
+        {this.displayAddButton()}
       </View>
     )
   }

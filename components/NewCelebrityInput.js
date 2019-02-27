@@ -86,7 +86,7 @@ class NewCelebrityInput extends Component {
         <Button
           title='Cancel'
           type='outline'
-          onPress={() => this.cancel()}
+          onPress={() => this.props.cancel()}
         />
         <Button
           title='Submit'
