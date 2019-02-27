@@ -1,25 +1,16 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
-import { ListItem } from 'react-native-elements';
-import { AntDesign } from '@expo/vector-icons';
-
-import { getItem } from '../helpers/storage';
+import { View, StyleSheet, FlatList } from 'react-native';
+import { ListItem, Button } from 'react-native-elements';
 
 class CelebrityList extends Component{
-  state = {
-    data: [],
-  }
-  async componentDidMount() {
-    const data = await getItem('celebrities');
-    this.setState({
-      data,
-    });
+  cancel() {
+    this.props.changeField('addNew', false);
   }
   list() {
-    if (this.state.data) {
+    if (this.props.data) {
       return (
         <FlatList
-          data={this.state.data}
+          data={this.props.data}
           renderItem={({item, index}) => {
             return (
                 <ListItem
@@ -40,16 +31,23 @@ class CelebrityList extends Component{
   displayAddButton() {
     if (!this.props.displayAddButton) {
       return (
-        <AntDesign
-          name='pluscircleo'
-          size={30}
-          onPress={() => this.props.addNewCelebrity()}
-        />
+        <View>
+          <Button
+            title='Add'
+            onPress={() => this.props.addNewCelebrity()}
+          />
+          <Button
+            title='Cancel'
+            type='outline'
+            onPress={() => this.cancel()}
+          />
+        </View>
       )
     }
     return null;
   }
   render() {
+    console.log('Rendering CelebrityList');
     return(
       <View style={styles.container}>
         {this.list()}

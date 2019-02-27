@@ -3,10 +3,23 @@ import { View, StyleSheet } from 'react-native';
 
 import NewCelebrityInput from './NewCelebrityInput';
 import CelebrityList from './CelebrityList';
+import { getItem } from '../helpers/storage';
 
 class ManageCelebrity extends Component{
   state = {
     addNew: false,
+    data: [],
+  }
+
+  async getCelebrities() {
+    const data = await getItem('celebrities');
+    this.setState({
+      data,
+    });
+  }
+
+  componentDidMount() {
+    this.getCelebrities();
   }
   
   addNewCelebrity() {
@@ -23,17 +36,15 @@ class ManageCelebrity extends Component{
 
   displayAddNew() {
     if (this.state.addNew) {
-      return <NewCelebrityInput cancel={this.cancel.bind(this)} changeField={this.props.changeField.bind(this)} />
+      return <NewCelebrityInput getCelebrities={this.getCelebrities.bind(this)} cancel={this.cancel.bind(this)} changeField={this.props.changeField.bind(this)} />
     }
-    return (
-      <View style={{flex: 1}}></View>
-    );
+    return null;
   }
 
   render() {
     return(
       <View style={styles.container}>
-        <CelebrityList displayAddButton={this.state.addNew} addNewCelebrity={this.addNewCelebrity.bind(this)} />
+        <CelebrityList data={this.state.data} changeField={this.props.changeField} displayAddButton={this.state.addNew} addNewCelebrity={this.addNewCelebrity.bind(this)} />
         { this.displayAddNew() }
       </View>
     )

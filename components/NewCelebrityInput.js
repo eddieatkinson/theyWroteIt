@@ -14,9 +14,7 @@ class NewCelebrityInput extends Component {
     isVerified: false,
     image: '',
   }
-  cancel() {
-    this.props.changeField('addNew', false);
-  }
+  
   async openImagePicker() {
     await permissionsForCamera();
     await permissionsForCameraRoll();
@@ -40,7 +38,8 @@ class NewCelebrityInput extends Component {
       alert('Please select a photo');
     } else {
       await addPerson(this.state);
-      this.cancel();
+      this.props.getCelebrities();
+      this.props.cancel();
     }
   }
   getImageButtonTitle() {
