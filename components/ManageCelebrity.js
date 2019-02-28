@@ -54,7 +54,7 @@ class ManageCelebrity extends Component{
   display() {
     if (this.state.edit) {
       return(
-        <EditCelebrity selectedCelebrity={this.state.data[this.state.selectedIndex]} />
+        <EditCelebrity data={this.state.data} selectedIndex={this.state.selectedIndex} />
       )
     }
     return (

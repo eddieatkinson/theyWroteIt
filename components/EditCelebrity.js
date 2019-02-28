@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 
 class EditCelebrity extends Component {
   render() {
-    console.log(this.props.selectedCelebrity);
+    const selectedCelebrity = this.props.data[this.props.selectedIndex];
     return(
-      <View>
-        <Text>Celebrity</Text>
+      <View style={{flex: 1}}>
+        <Image
+          source={{uri: selectedCelebrity.image}}
+          style={{
+            height: '20%',
+          }}
+          resizeMode='contain'
+        />
+        <Text>{selectedCelebrity.value}</Text>
+        <Text>{selectedCelebrity.handle}</Text>
       </View>
     )
   }
