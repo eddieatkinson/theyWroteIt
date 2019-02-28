@@ -17,7 +17,7 @@ class CelebrityList extends Component{
                   title={item.value}
                   leftAvatar={{ source: {uri: item.image}}}
                   key={index}
-                  onPress={() => console.log(item.value)}
+                  onPress={() => this.props.changeSelectedIndex(index)}
                 />
               )
             }
@@ -47,7 +47,6 @@ class CelebrityList extends Component{
     return null;
   }
   render() {
-    console.log('Rendering CelebrityList');
     return(
       <View style={styles.container}>
         {this.list()}

@@ -3,12 +3,19 @@ import { View, StyleSheet } from 'react-native';
 
 import NewCelebrityInput from './NewCelebrityInput';
 import CelebrityList from './CelebrityList';
+import EditCelebrity from './EditCelebrity';
 import { getItem } from '../helpers/storage';
 
 class ManageCelebrity extends Component{
   state = {
     addNew: false,
     data: [],
+    selectedIndex: 0,
+    edit: false,
+  }
+
+  componentDidMount() {
+    this.getCelebrities();
   }
 
   async getCelebrities() {
@@ -18,8 +25,11 @@ class ManageCelebrity extends Component{
     });
   }
 
-  componentDidMount() {
-    this.getCelebrities();
+  changeSelectedIndex(selectedIndex) {
+    this.setState({
+      edit: true,
+      selectedIndex,
+    });
   }
   
   addNewCelebrity() {
@@ -41,11 +51,24 @@ class ManageCelebrity extends Component{
     return null;
   }
 
+  display() {
+    if (this.state.edit) {
+      return(
+        <EditCelebrity selectedCelebrity={this.state.data[this.state.selectedIndex]} />
+      )
+    }
+    return (
+      <View style={{flex: 1}}>
+        <CelebrityList data={this.state.data} changeField={this.props.changeField} displayAddButton={this.state.addNew} addNewCelebrity={this.addNewCelebrity.bind(this)} changeSelectedIndex={this.changeSelectedIndex.bind(this)} />
+        { this.displayAddNew() }
+      </View>
+    )
+  }
+
   render() {
     return(
       <View style={styles.container}>
-        <CelebrityList data={this.state.data} changeField={this.props.changeField} displayAddButton={this.state.addNew} addNewCelebrity={this.addNewCelebrity.bind(this)} />
-        { this.displayAddNew() }
+        { this.display() }
       </View>
     )
   }
