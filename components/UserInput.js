@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, TouchableHighlight, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, View, Text, KeyboardAvoidingView } from 'react-native';
 import { Input } from 'react-native-elements';
 import { Dropdown } from 'react-native-material-dropdown';
 import DatePicker from 'react-native-datepicker';

@@ -39,7 +39,7 @@ class NewCelebrityInput extends Component {
     } else {
       await addPerson(this.state);
       this.props.getCelebrities();
-      this.props.cancel();
+      this.props.cancel('addNew');
     }
   }
   getImageButtonTitle() {
@@ -85,7 +85,7 @@ class NewCelebrityInput extends Component {
         <Button
           title='Cancel'
           type='outline'
-          onPress={() => this.props.cancel()}
+          onPress={() => this.props.cancel('addNew')}
         />
         <Button
           title='Submit'

@@ -38,9 +38,9 @@ class ManageCelebrity extends Component{
     });
   }
 
-  cancel() {
+  cancel(field) {
     this.setState({
-      addNew: false,
+      [field]: false,
     });
   }
 
@@ -54,7 +54,7 @@ class ManageCelebrity extends Component{
   display() {
     if (this.state.edit) {
       return(
-        <EditCelebrity data={this.state.data} selectedIndex={this.state.selectedIndex} />
+        <EditCelebrity data={this.state.data} selectedIndex={this.state.selectedIndex} cancel={this.cancel.bind(this)} />
       )
     }
     return (
