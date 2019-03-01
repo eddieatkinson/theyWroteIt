@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, SafeAreaView } from 'react-native';
 import Result from './components/Result';
 import UserInput from './components/UserInput';
-import NewCelebrityInput from './components/NewCelebrityInput';
 import moment from 'moment';
+import ManageCelebrity from './components/ManageCelebrity';
 
 export default class App extends React.Component {
   state = {
@@ -20,6 +20,7 @@ export default class App extends React.Component {
     likes: 0,
     comments: 0,
     addNew: false,
+    selectedIndex: 0,
   }
 
   changeField(field, input) {
@@ -28,21 +29,25 @@ export default class App extends React.Component {
     });
   }
 
-  displayBottomHalf() {
+  display() {
     if(this.state.addNew) {
       return(
-        <NewCelebrityInput changeField={this.changeField.bind(this)} />
+        <ManageCelebrity changeField={this.changeField.bind(this)} selectedIndex={this.state.selectedIndex} />
       )
     }
-    return <UserInput time={this.state.time} date={this.state.date} changeField={this.changeField.bind(this)} />
+    return(
+      <View style={styles.container}>
+        <Result state={this.state} />
+        <UserInput time={this.state.time} date={this.state.date} changeField={this.changeField.bind(this)} />
+      </View>
+    )
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <Result state={this.state} />
-        {this.displayBottomHalf()}
-      </View>
+      <SafeAreaView style={{flex: 1}}>
+        {this.display()}
+      </SafeAreaView>
     );
   }
 }

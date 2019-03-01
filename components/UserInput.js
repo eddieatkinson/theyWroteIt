@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, TouchableHighlight, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, View, Text, KeyboardAvoidingView } from 'react-native';
 import { Input } from 'react-native-elements';
 import { Dropdown } from 'react-native-material-dropdown';
 import DatePicker from 'react-native-datepicker';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { EvilIcons } from '@expo/vector-icons';
 
-import data from '../helpers/data';
 import { formatNumber, calculateCharactersLeft } from '../helpers/utility';
 import { getItem } from '../helpers/storage';
 
@@ -35,7 +34,8 @@ class UserInput extends Component {
   }
 
   onChangeText(index, data) {
-    this.props.changeField('celebrity', data[index])
+    this.props.changeField('celebrity', data[index]);
+    this.props.changeField('selectedIndex', index);
   }
 
   render() {
@@ -52,13 +52,13 @@ class UserInput extends Component {
             data={this.state.data}
             onChangeText={(value, index, data) => this.onChangeText(index, data)}
           />
-          <MaterialCommunityIcons
-            style={{position: 'absolute', right: 0, bottom: 10}}
-            name='plus-circle-outline'
+          <EvilIcons
+            style={{position: 'absolute', right: 0, bottom: 10}} 
+            name='gear'
             size={30}
-            color='green'
+            color='gray'
             onPress={() => this.changeField('addNew', true)}
-            />
+          />
         </View>
         <View style={{flexDirection: 'row'}}>
           <Input
