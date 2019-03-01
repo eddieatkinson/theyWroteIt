@@ -33,13 +33,13 @@ class CelebrityList extends Component{
       return (
         <View>
           <Button
-            title='Add'
-            onPress={() => this.props.addNewCelebrity()}
-          />
-          <Button
             title='Cancel'
             type='outline'
             onPress={() => this.cancel()}
+          />
+          <Button
+            title='Add'
+            onPress={() => this.props.addNewCelebrity()}
           />
         </View>
       )
