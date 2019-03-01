@@ -33,7 +33,7 @@ class CelebrityList extends Component{
       return (
         <View>
           <Button
-            title='Cancel'
+            title='Done'
             type='outline'
             onPress={() => this.cancel()}
           />
