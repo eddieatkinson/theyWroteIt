@@ -16,8 +16,16 @@ class EditCelebrity extends Component {
     });
   }
 
+  replaceCelebrity(data, index, celebrity) {
+    let dataCopy = data.slice();
+    dataCopy[index] = celebrity;
+    return dataCopy;
+  }
+
   onSubmit() {
-    console.log('You pressed submit!!!');
+    const newData = this.replaceCelebrity(this.props.data, this.props.selectedIndex, this.state);
+    this.props.changeCelebrity(newData);
+    this.props.cancel('edit');
   }
 
   render() {

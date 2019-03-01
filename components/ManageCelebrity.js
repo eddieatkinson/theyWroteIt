@@ -25,6 +25,12 @@ class ManageCelebrity extends Component{
     });
   }
 
+  changeCelebrity(data) {
+    this.setState({
+      data,
+    });
+  }
+
   changeSelectedIndex(selectedIndex) {
     this.setState({
       edit: true,
@@ -54,7 +60,7 @@ class ManageCelebrity extends Component{
   display() {
     if (this.state.edit) {
       return(
-        <EditCelebrity data={this.state.data} selectedIndex={this.state.selectedIndex} cancel={this.cancel.bind(this)} />
+        <EditCelebrity data={this.state.data} selectedIndex={this.state.selectedIndex} cancel={this.cancel.bind(this)} changeCelebrity={this.changeCelebrity.bind(this)} />
       )
     }
     return (
@@ -66,6 +72,7 @@ class ManageCelebrity extends Component{
   }
 
   render() {
+    console.log(this.state.data);
     return(
       <View style={styles.container}>
         { this.display() }
