@@ -25,12 +25,13 @@ class ManageCelebrity extends Component{
     });
   }
 
-  changeCelebrity(data) {
+  changeCelebrity(action, data) {
     this.setState({
       data,
     });
     setItem(data);
-    this.props.changeField('celebrity', data[this.props.selectedIndex]);
+    const newData = action === 'replace' ? data[this.props.selectedIndex] : data[0];
+    this.props.changeField('celebrity', newData);
   }
 
   changeSelectedIndex(selectedIndex) {

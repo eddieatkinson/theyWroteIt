@@ -16,7 +16,6 @@ export async function getItem(key) {
 export async function setItem(celebrities) {
   try {
     await AsyncStorage.setItem('celebrities', JSON.stringify(celebrities));
-    console.log('You should have an updated list of celebrities!');
   } catch (error) {
     console.log(error);
   }
@@ -31,7 +30,6 @@ export async function addPerson(newPersonInfo) {
   newPerson.push(newPersonInfo);
   try {
     await AsyncStorage.setItem('celebrities', JSON.stringify(newPerson));
-    console.log('SUCCESS!!!');
   } catch (error) {
     console.log(error);
   }

@@ -16,15 +16,19 @@ class EditCelebrity extends Component {
     });
   }
 
-  replaceCelebrity(data, index, celebrity) {
+  editCelebrity(action, data, index, celebrity) {
     let dataCopy = data.slice();
-    dataCopy[index] = celebrity;
+    if (action === 'replace') {
+      dataCopy[index] = celebrity;
+    } else if (action === 'delete') {
+      dataCopy.splice(index, 1);
+    }
     return dataCopy;
   }
 
-  onSubmit() {
-    const newData = this.replaceCelebrity(this.props.data, this.props.selectedIndex, this.state);
-    this.props.changeCelebrity(newData);
+  onSubmit(action) {
+    const newData = this.editCelebrity(action, this.props.data, this.props.selectedIndex, this.state);
+    this.props.changeCelebrity(action, newData);
     this.props.cancel('edit');
   }
 
@@ -61,13 +65,20 @@ class EditCelebrity extends Component {
           containerStyle={styles.checkBox}
         />
         <Button
+          title='Delete'
+          type='outline'
+          titleStyle={{color: 'white'}}
+          buttonStyle={{backgroundColor: 'red'}}
+          onPress={() => this.onSubmit('delete')}
+        />
+        <Button
           title='Cancel'
           type='outline'
           onPress={() => this.props.cancel('edit')}
         />
         <Button
           title='Submit'
-          onPress={() => this.onSubmit()}
+          onPress={() => this.onSubmit('replace')}
         />
       </KeyboardAvoidingView>
     )
