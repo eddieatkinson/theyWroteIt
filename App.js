@@ -20,6 +20,7 @@ export default class App extends React.Component {
     likes: 0,
     comments: 0,
     addNew: false,
+    selectedIndex: 0,
   }
 
   changeField(field, input) {
@@ -31,7 +32,7 @@ export default class App extends React.Component {
   display() {
     if(this.state.addNew) {
       return(
-        <ManageCelebrity changeField={this.changeField.bind(this)} />
+        <ManageCelebrity changeField={this.changeField.bind(this)} selectedIndex={this.state.selectedIndex} />
       )
     }
     return(

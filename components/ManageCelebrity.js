@@ -4,7 +4,7 @@ import { View, StyleSheet } from 'react-native';
 import NewCelebrityInput from './NewCelebrityInput';
 import CelebrityList from './CelebrityList';
 import EditCelebrity from './EditCelebrity';
-import { getItem } from '../helpers/storage';
+import { getItem, setItem } from '../helpers/storage';
 
 class ManageCelebrity extends Component{
   state = {
@@ -29,6 +29,8 @@ class ManageCelebrity extends Component{
     this.setState({
       data,
     });
+    setItem(data);
+    this.props.changeField('celebrity', data[this.props.selectedIndex]);
   }
 
   changeSelectedIndex(selectedIndex) {
@@ -72,7 +74,6 @@ class ManageCelebrity extends Component{
   }
 
   render() {
-    console.log(this.state.data);
     return(
       <View style={styles.container}>
         { this.display() }

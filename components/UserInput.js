@@ -34,7 +34,8 @@ class UserInput extends Component {
   }
 
   onChangeText(index, data) {
-    this.props.changeField('celebrity', data[index])
+    this.props.changeField('celebrity', data[index]);
+    this.props.changeField('selectedIndex', index);
   }
 
   render() {
