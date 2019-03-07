@@ -27,6 +27,7 @@
     }
   },
   "infoPlist": {
-    "NSCameraUsageDescription": "This app uses the camera to scan barcodes on event tickets."
+    "NSCameraUsageDescription": "TheySaidIt would like to access your camera.",
+    "NSPhotoLibraryUsageDescription": "TheySaidIt would like to access your photos."
   }
 }
