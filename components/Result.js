@@ -1,7 +1,7 @@
 // One of the things I’ve been impressed with most since becoming a father is my ability to get like 2 hours of sleep and still function and be perfectly coherent potato buses.
 
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { StyleSheet, View, Text, Image, Platform } from 'react-native';
 import { EvilIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 import Autolink from 'react-native-autolink';
 
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   name: {
-    fontFamily: 'Helvetica Neue',
+    fontFamily: Platform.OS === 'ios' ? 'Helvetica Neue' : 'sans-serif',
     fontWeight: 'bold',
   },
   downArrow: {
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     paddingBottom: 7,
   },
   content: {
-    fontFamily: 'Helvetica Neue',
+    fontFamily: Platform.OS === 'ios' ? 'Helvetica Neue' : 'sans-serif',
     fontWeight: '300',
     fontSize: 19,
     lineHeight: 28,

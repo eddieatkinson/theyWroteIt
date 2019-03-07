@@ -25,5 +25,9 @@
     "ios": {
       "supportsTablet": true
     }
+  },
+  "infoPlist": {
+    "NSCameraUsageDescription": "TheySaidIt would like to access your camera.",
+    "NSPhotoLibraryUsageDescription": "TheySaidIt would like to access your photos."
   }
 }
