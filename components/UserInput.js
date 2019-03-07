@@ -47,7 +47,7 @@ class UserInput extends Component {
       <KeyboardAvoidingView behavior='padding' style={styles.container}>
         <View style={{ flexDirection: 'row' }}>
           <Dropdown
-            containerStyle={{width: 300}}
+            containerStyle={{width: '85%'}}
             label={dropdownLabel}
             data={this.state.data}
             onChangeText={(value, index, data) => this.onChangeText(index, data)}
@@ -62,7 +62,7 @@ class UserInput extends Component {
         </View>
         <View style={{flexDirection: 'row'}}>
           <Input
-            containerStyle={{width: 300}}
+            containerStyle={{width: '90%'}}
             multiline={true}
             maxLength={280}
             placeholder='Stupid stuff...'
@@ -88,7 +88,7 @@ class UserInput extends Component {
         </View>
         <View style={{flexDirection: 'row'}}>
           <DatePicker
-            style={{padding: 10, width: 150}}
+            style={{padding: 10, width: '45%'}}
             placeholder={this.props.time}
             customStyles={{
               placeholderText: {
@@ -103,7 +103,7 @@ class UserInput extends Component {
             onDateChange={(time) => this.changeField('time', time)}
           />
           <DatePicker
-            style={{padding: 10, width: 150}}
+            style={{padding: 10, width: '45%'}}
             placeholder={this.props.date}
             customStyles={{
               placeholderText: {

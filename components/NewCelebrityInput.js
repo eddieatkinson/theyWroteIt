@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   inputField: {
-    width: 300,
+    width: '90%',
     marginTop: 25,
   },
   checkBox: {
