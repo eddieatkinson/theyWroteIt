@@ -23,6 +23,17 @@ export default class App extends React.Component {
     selectedIndex: 0,
   }
 
+  componentWillUpdate(nextProps, nextState) {
+    if (!nextState.celebrity) {
+      this.changeField('celebrity', {
+        value: 'Who??',
+        isVerified: false,
+        handle: '@someone',
+        image: require('./assets/images/fred.jpg'),
+      });
+    }
+  }
+
   changeField(field, input) {
     this.setState({
       [field]: input,
@@ -37,7 +48,7 @@ export default class App extends React.Component {
     }
     return(
       <View style={styles.container}>
-        <Result state={this.state} />
+        <Result state={this.state} changeField={this.changeField.bind(this)} />
         <UserInput time={this.state.time} date={this.state.date} changeField={this.changeField.bind(this)} />
       </View>
     )
