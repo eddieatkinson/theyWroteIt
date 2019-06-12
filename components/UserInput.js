@@ -39,9 +39,9 @@ class UserInput extends Component {
   }
 
   render() {
-    let dropdownLabel = 'Choose your celebrity';
+    let dropdownLabel = 'Choose your user';
     if (!this.state.data || this.state.data.length === 0) {
-      dropdownLabel = 'Please add a celebrity';
+      dropdownLabel = 'Please add a user';
     }
     return(
       <KeyboardAvoidingView behavior='padding' style={styles.container}>
@@ -65,7 +65,7 @@ class UserInput extends Component {
             containerStyle={{width: '90%'}}
             multiline={true}
             maxLength={280}
-            placeholder='Stupid stuff...'
+            placeholder='Your text...'
             onChangeText={(text) => this.changeField('content', text)}
           />
           <Text style={ this.state.numberOfCharactersLeft <= 10 ? { color: 'red' } : null }>{this.state.numberOfCharactersLeft}{'\n'}left</Text>
