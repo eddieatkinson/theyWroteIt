@@ -3,6 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import { Input, CheckBox, Button } from 'react-native-elements';
 import { ImagePicker } from 'expo';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { isEmpty } from 'lodash';
 
 import { addPerson } from '../helpers/storage';
 import { permissionsForCamera, permissionsForCameraRoll } from '../helpers/permissions';
@@ -50,6 +51,13 @@ class NewCelebrityInput extends Component {
     const iconName = this.state.image ? 'image-outline' : 'image-plus';
     return iconName;
   }
+  handleCancel() {
+    if(isEmpty(this.props.data)) {
+      this.props.changeField('addNew', false);
+    } else {
+      this.props.cancel('addNew');
+    }
+  }
   render() {
     return(
       <View style={styles.container}>
@@ -85,7 +93,7 @@ class NewCelebrityInput extends Component {
         <Button
           title='Cancel'
           type='outline'
-          onPress={() => this.props.cancel('addNew')}
+          onPress={() => this.handleCancel()}
         />
         <Button
           title='Submit'

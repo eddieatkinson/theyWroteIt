@@ -56,7 +56,7 @@ class ManageCelebrity extends Component{
 
   displayAddNew() {
     if (this.state.addNew || isEmpty(this.state.data)) {
-      return <NewCelebrityInput getCelebrities={this.getCelebrities.bind(this)} cancel={this.cancel.bind(this)} changeField={this.props.changeField.bind(this)} />
+      return <NewCelebrityInput getCelebrities={this.getCelebrities.bind(this)} cancel={this.cancel.bind(this)} changeField={this.props.changeField.bind(this)} data={this.state.data} />
     }
     return null;
   }
