@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
+import { isEmpty } from 'lodash';
 
 import NewCelebrityInput from './NewCelebrityInput';
 import CelebrityList from './CelebrityList';
@@ -9,7 +10,7 @@ import { getItem, setItem } from '../helpers/storage';
 class ManageCelebrity extends Component{
   state = {
     addNew: false,
-    data: [],
+    data: [1],
     selectedIndex: 0,
     edit: false,
   }
@@ -54,7 +55,8 @@ class ManageCelebrity extends Component{
   }
 
   displayAddNew() {
-    if (this.state.addNew) {
+    if (this.state.addNew || isEmpty(this.state.data)) {
+      console.log('Youre in here!');
       return <NewCelebrityInput getCelebrities={this.getCelebrities.bind(this)} cancel={this.cancel.bind(this)} changeField={this.props.changeField.bind(this)} />
     }
     return null;
