@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
 import { ListItem, Button } from 'react-native-elements';
+import { isEmpty } from 'lodash';
 
 class CelebrityList extends Component{
   cancel() {
@@ -29,7 +30,7 @@ class CelebrityList extends Component{
     return null;
   }
   displayAddButton() {
-    if (!this.props.displayAddButton) {
+    if (!this.props.displayAddButton && !isEmpty(this.props.data)) {
       return (
         <View>
           <Button
