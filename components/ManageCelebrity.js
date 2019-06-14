@@ -10,7 +10,7 @@ import { getItem, setItem } from '../helpers/storage';
 class ManageCelebrity extends Component{
   state = {
     addNew: false,
-    data: [1],
+    data: [{}],
     selectedIndex: 0,
     edit: false,
   }
@@ -56,7 +56,6 @@ class ManageCelebrity extends Component{
 
   displayAddNew() {
     if (this.state.addNew || isEmpty(this.state.data)) {
-      console.log('Youre in here!');
       return <NewCelebrityInput getCelebrities={this.getCelebrities.bind(this)} cancel={this.cancel.bind(this)} changeField={this.props.changeField.bind(this)} />
     }
     return null;
