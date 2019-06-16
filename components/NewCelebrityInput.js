@@ -86,6 +86,8 @@ class NewCelebrityInput extends Component {
         <CheckBox
           center
           title='Verified'
+          checkedIcon='dot-circle-o'
+          uncheckedIcon='circle-o'
           checked={this.state.isVerified}
           onPress={() => this.changeField('isVerified', !this.state.isVerified)}
           containerStyle={styles.checkBox}
